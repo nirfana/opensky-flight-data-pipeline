@@ -1,8 +1,19 @@
 #!/bin/bash
 
-PROJECT_DIR="/home/nirfana/de-portfolio-project"
-cd $PROJECT_DIR
-source venv/bin/activate
+# Force working directory to project root
+cd /home/nirfana/de-portfolio-project
+
+# Activate Virtual Environment
+source /home/nirfana/de-portfolio-project/venv/bin/activate
+
+# Load environment variables safely
+if [ -f .env ]; then
+    set -o allexport
+    source .env
+    set +o allexport
+fi
+
+echo "=== Pipeline Execution Started: $(date) ==="
 
 echo "--- 1. Running Ingestion ---"
 if ! python pipeline/ingest.py; then
@@ -29,4 +40,4 @@ if ! dbt test --select stg_flights fct_country_flight_stats; then
 fi
 cd ..
 
-echo "--- Pipeline execution complete ---"
+echo "=== Pipeline Execution Finished: $(date) ==="
