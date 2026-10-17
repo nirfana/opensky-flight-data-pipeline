@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: public
+    tables:
+      - name: staging_flights
+
+models:
+  - name: stg_flights
+    description: "Cleaned flight state vectors from OpenSky API"
+    columns:
+      - name: icao24
+        tests:
+          - not_null
