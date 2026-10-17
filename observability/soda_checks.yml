@@ -1,0 +1,4 @@
+checks for staging_flights:
+  - row_count > 0
+  - missing_count(icao24) = 0
+  - min(velocity) >= 0

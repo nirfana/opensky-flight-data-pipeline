@@ -1,0 +1,19 @@
+# Python virtual environment & cache
+venv/
+__pycache__/
+*.pyc
+
+# Local logs & database files
+*.log
+*.sqlite3
+
+# OpenTofu / Terraform local state & cache
+infra/.terraform/
+infra/.opentofu/
+infra/*.tfstate
+infra/*.tfstate.backup
+infra/.terraform.lock.hcl
+
+# IDE settings
+.vscode/
+.idea/

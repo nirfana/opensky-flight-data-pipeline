@@ -1,0 +1,40 @@
+networks:
+  data_pipeline_network:
+    external: true
+
+volumes:
+  postgres_data_vol:
+    external: true
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: warehouse_db
+    environment:
+      POSTGRES_DB: analytics
+      POSTGRES_USER: de_user
+      POSTGRES_PASSWORD: de_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data_vol:/var/lib/postgresql/data
+    networks:
+      - data_pipeline_network
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    networks:
+      - data_pipeline_network
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    networks:
+      - data_pipeline_network
