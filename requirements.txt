@@ -1,0 +1,13 @@
+# Data Fetching & Core Utilities
+requests>=2.31.0
+pandas>=2.1.0
+
+# Database Connectivity
+psycopg2-binary>=2.9.9
+
+# Data Quality & Observability
+soda-core>=3.5.0
+soda-core-postgres>=3.5.0
+
+# Dependency fix for Python 3.12+ (Ubuntu 24.04 compatibility)
+setuptools>=69.0.0
