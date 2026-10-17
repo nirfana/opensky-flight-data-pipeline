@@ -17,3 +17,6 @@ infra/.terraform.lock.hcl
 # IDE settings
 .vscode/
 .idea/
+
+# ENV files
+.env

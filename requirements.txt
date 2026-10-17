@@ -11,3 +11,4 @@ soda-core-postgres>=3.5.0
 
 # Dependency fix for Python 3.12+ (Ubuntu 24.04 compatibility)
 setuptools>=69.0.0
+python-dotenv==1.2.4
